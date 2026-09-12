@@ -76,6 +76,43 @@ h1, h2, h3, h4 {
   top: 12px;
 }
 
+/* -------------------- Running text (pengumuman) -------------------- */
+.marquee {
+  background: var(--color-primary-dark);
+  border-bottom: 1px solid var(--color-accent);
+  overflow: hidden;
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 22s linear infinite;
+}
+
+.marquee__track span {
+  display: inline-block;
+  padding: 9px 48px;
+  color: var(--color-accent-soft);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+    flex-wrap: wrap;
+    width: auto;
+  }
+  .marquee__track span:last-child { display: none; }
+}
+
 /* -------------------- Header / Navbar -------------------- */
 .site-header {
   position: sticky;
@@ -479,6 +516,66 @@ h1, h2, h3, h4 {
   justify-content: space-between;
 }
 
+/* -------------------- Sarpras (sarana & prasarana) -------------------- */
+.sarpras-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.sarpras-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-line);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.sarpras-card__media {
+  aspect-ratio: 4 / 3;
+  background: var(--color-bg-alt);
+  border-bottom: 1px solid var(--color-line);
+  overflow: hidden;
+}
+.sarpras-card__media img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+
+.sarpras-card__body {
+  padding: 22px 22px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.sarpras-card__tag {
+  font-size: 0.72rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.sarpras-card__title {
+  font-size: 1.12rem;
+  margin-bottom: 8px;
+}
+
+.sarpras-card__desc {
+  font-size: 0.92rem;
+  color: var(--color-ink-soft);
+  flex: 1;
+}
+
+.sarpras-card__meta {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--color-line);
+  font-size: 0.82rem;
+  color: var(--color-ink-soft);
+  display: flex;
+  justify-content: space-between;
+}
+
 /* -------------------- Profil Sekolah: document layout -------------------- */
 .doc-header {
   border: 1px solid var(--color-line);
@@ -730,6 +827,7 @@ h1, h2, h3, h4 {
   .sambutan__avatar { width: 100px; max-width: 100px; }
   .info-grid { grid-template-columns: 1fr 1fr; }
   .ekskul-grid { grid-template-columns: 1fr 1fr; }
+  .sarpras-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .data-list { grid-template-columns: 1fr; }
   .data-list dt::after { display: none; }
@@ -753,5 +851,6 @@ h1, h2, h3, h4 {
   .nav-menu a { padding: 12px 6px; border-bottom: 1px solid var(--color-line); }
   .info-grid { grid-template-columns: 1fr; }
   .ekskul-grid { grid-template-columns: 1fr; }
+  .sarpras-grid { grid-template-columns: 1fr; }
   .pillar-item { grid-template-columns: 28px 1fr; }
 }
